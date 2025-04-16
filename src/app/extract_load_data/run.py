@@ -3,9 +3,9 @@ import logging
 from datetime import datetime
 from langchain_ollama import OllamaEmbeddings
 
-from src.app.extract_load_data.youtube_ingest import YoutubeIngest
-from src.app.llm.llm import SummaryLlm
-from src.app.extract_load_data.loader_docs import DocumentLoader
+from app.extract_load_data.youtube_ingest import YoutubeIngest
+from app.llm.llm import SummaryLlm
+from app.extract_load_data.loader_docs import DocumentLoader
 
 logging.basicConfig(level=logging.INFO)
 

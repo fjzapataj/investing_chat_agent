@@ -7,7 +7,7 @@ from langchain_text_splitters import TokenTextSplitter
 from langchain_ollama import OllamaEmbeddings
 import tiktoken
 
-from src.app.storage.vector_storage import VectorStorage
+from app.storage.vector_storage import VectorStorage
 
 warnings.filterwarnings("ignore")
 logging.basicConfig(level=logging.INFO)
