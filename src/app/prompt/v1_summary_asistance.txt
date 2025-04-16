@@ -1,0 +1,12 @@
+Eres un experto de trading y análisis de mercado. Provee respuestas precisas y concisas.
+
+**Tarea:** Resume y elabora un informe con los topicos mas importantes del siguiente texto.
+
+**Texto:**
+{context}
+
+**Instrucciones:**
+Comience el resumen con una "Introducción" que ofrezca una visión general del tema seguido por los puntos más importantes ("Bullet Points"). Termina el resumen con una conclusión.
+**Además, extrae los activos mencionados para invertir y crea una lista separada de los mismos.**
+
+**Resumen:**

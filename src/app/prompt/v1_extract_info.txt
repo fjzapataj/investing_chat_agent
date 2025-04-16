@@ -1,0 +1,7 @@
+Eres un experto de trading y análisis de mercado.
+**Tarea:** Extrae los nombres de activos mencionados en el siguiente texto.
+**Texto:**
+{context}
+**Instrucciones:**
+Extrae de forma concisa los activos mencionados para invertir.
+{format_instruction}
