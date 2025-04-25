@@ -2,6 +2,7 @@ import pandas as pd
 import logging
 from datetime import datetime
 from langchain_ollama import OllamaEmbeddings
+from langchain_openai import OpenAIEmbeddings
 
 from app.extract_load_data.youtube_ingest import YoutubeIngest
 from app.llm.llm import SummaryLlm
@@ -23,7 +24,15 @@ default_loader_config = {
             model="nomic-embed-text", base_url="http://localhost:11434"
         ),
     },
-    "source_folder_path": "src/data/pending",
+    "source_folder_path": "data/pending",
+}
+
+open_ia_config = {
+    "vdb_config": {
+        "index_name": "youtube-transcription-summary-openia-index",
+        "embedding_model": OpenAIEmbeddings(model="text-embedding-3-small"),
+    },
+    "source_folder_path": "data/pending",
 }
 
 
@@ -33,7 +42,7 @@ class YoutubeLoaderRunner:
     def __init__(
         self,
         llm_config: dict = default_llm_config,
-        loader_config: dict = default_loader_config,
+        loader_config: dict = open_ia_config,
     ):
         self.llm_config = llm_config
         self.loader_config = loader_config
@@ -49,7 +58,7 @@ class YoutubeLoaderRunner:
         df_videos.dropna(subset=["transcript"], inplace=True)
         df_videos["publish_date"] = pd.to_datetime(df_videos["publishTime"]).dt.date
         df_videos = self.run_summary(df_videos)
-        self.save_to_csv(df_videos, "src/data/pending/")
+        self.save_to_csv(df_videos, "data/pending/")
         self.document_loader.ingest_documents()
 
     def run_summary(self, df: pd.DataFrame):
@@ -81,7 +90,7 @@ class YoutubeLoaderRunner:
                     )
                     return None
 
-    def save_to_csv(self, df: pd.DataFrame, file_path: str = "src/data/pending/"):
+    def save_to_csv(self, df: pd.DataFrame, file_path: str = "data/pending/"):
         date_format = "%Y-%m-%d"
         current_date = datetime.now().strftime(date_format)
         file_name = f"youtube_videos_{current_date}.csv"

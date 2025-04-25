@@ -41,13 +41,13 @@ class Llm:
         if self.type == "ollama":
             self.base_url = config.get("base_url")
             self.model = config.get("model")
-            self.llm = ChatOllama(base_url=self.base_url, model=self.model)
+            self.llm = ChatOllama(
+                base_url=self.base_url, model=self.model, temperature=0
+            )
         elif self.type == "openai":
-            self.api_key = config.get("api_key")
             self.model = config.get("model", "gpt-4o-mini")
             self.temperature = config.get("temperature", 0)
-            self.max_tokens = config.get("max_tokens")
-            self.model = config.get("model")
+            self.max_tokens = config.get("max_tokens", None)
             self.llm = ChatOpenAI(
                 model=self.model,
                 temperature=self.temperature,
