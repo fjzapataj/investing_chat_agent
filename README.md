@@ -62,6 +62,7 @@ El agente utiliza modelos de lenguaje (LLM) y una arquitectura supervisor-worker
   - **Supervisor-trabajadores**: Arquitectura donde un supervisor coordina tareas y varios trabajadores ejecutan funciones especializadas (extracción, resumen, análisis, etc.).
   - [Grafo del asistente chatbot especializado](src/app/graphs/supervisor_graph.py)
 
+![alt text](image-2.png)
 
 ## Cómo Empezar
 
