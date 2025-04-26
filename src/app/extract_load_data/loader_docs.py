@@ -23,7 +23,7 @@ defaul_config = {
         "index_name": "youtube-transcription-summary-ollama-index",
         "embedding_model": embedding_model,
     },
-    "source_folder_path": "src/data/pending",
+    "source_folder_path": "data/pending",
 }
 
 
