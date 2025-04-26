@@ -3,11 +3,11 @@ import os
 import streamlit as st
 
 # fmt: off
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))) #'../..'
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 
 # fmt: on
 # from app.chat.state_machine import graph
-from app.chat.supervisor_graph import graph
+from app.graphs.supervisor_graph import graph
 
 
 def stream_graph_updates(user_input: str, config: dict):
@@ -44,29 +44,50 @@ def stream_graph_updates(user_input: str, config: dict):
             yield respuesta
 
 
-config = {"configurable": {"thread_id": "1"}}
+st.title("Chat LangGraph")
 
-st.title("Chat LangGraph Demo")
+menu = st.sidebar.selectbox(
+    "Selecciona una ventana",
+    ["Chatbot Especializado", "Grafo Agente", "Metricas evaluación"],
+)
 
-if "messages" not in st.session_state:
-    st.session_state.messages = []
+if menu == "Chatbot Especializado":
+    config = {"configurable": {"thread_id": "1"}}
 
-# Mostrar historial
-for msg in st.session_state.messages:
-    if msg["role"] == "user":
-        st.markdown(f"**Usuario:** {msg['content']}")
-    else:
-        st.markdown(f"**Asistente:** {msg['content']}")
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
 
-with st.form("form_mensaje", clear_on_submit=True):
-    user_input = st.text_input("Escribe tu mensaje:")
-    enviar = st.form_submit_button("Enviar")
+    # Mostrar historial
+    for msg in st.session_state.messages:
+        if msg["role"] == "user":
+            st.markdown(f"**Usuario:** {msg['content']}")
+        else:
+            st.markdown(f"**Asistente:** {msg['content']}")
 
-if enviar and user_input:
-    st.session_state.messages.append({"role": "user", "content": user_input})
-    respuesta = ""
-    message_placeholder = st.empty()
-    for partial in stream_graph_updates(user_input, config):
-        message_placeholder.markdown(f"**Asistente:** {partial}")
-        respuesta = partial
-    st.session_state.messages.append({"role": "assistant", "content": respuesta})
+    with st.form("form_mensaje", clear_on_submit=True):
+        user_input = st.text_input("Escribe tu mensaje:")
+        enviar = st.form_submit_button("Enviar")
+
+    if enviar and user_input:
+        st.session_state.messages.append({"role": "user", "content": user_input})
+        respuesta = ""
+        message_placeholder = st.empty()
+        for partial in stream_graph_updates(user_input, config):
+            message_placeholder.markdown(f"**Asistente:** {partial}")
+            respuesta = partial
+        st.session_state.messages.append({"role": "assistant", "content": respuesta})
+
+elif menu == "Grafo Agente":
+    st.subheader("Visualización del Grafo del Agente")
+    st.info("Grafo del agente.")
+    # Aquí puedes agregar el código para visualizar el grafo o mostrar información adicional.
+
+    st.image(
+        graph.get_graph().draw_mermaid_png(),
+        caption="Grafo del Agente",
+        # use_column_width=True,
+    )
+
+elif menu == "Metricas evaluación":
+    st.subheader("Metricas de evaluacion del agente")
+    st.info("Basado en dataset de 10 preguntas y respuestas evaluar el sistema.")

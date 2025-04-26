@@ -37,7 +37,7 @@ class Router(TypedDict):
     next: Literal[*options]
 
 
-llm = model = ChatOpenAI(model="gpt-4o-mini")  # "gpt-4o"
+llm = ChatOpenAI(model="gpt-4o-mini")  # "gpt-4o"
 
 
 class State(MessagesState):

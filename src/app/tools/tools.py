@@ -5,6 +5,7 @@ import yfinance as yf
 from scipy.stats import gaussian_kde
 from scipy.optimize import minimize
 from typing import Annotated
+from datetime import datetime
 
 # This executes code locally, which can be unsafe
 repl = PythonREPL()
@@ -77,7 +78,7 @@ def optimize_portfolio_kde_cvar(risk_profile: str = "medio"):
         "GC=F",
     ]
     start_date = "2023-01-01"
-    end_date = "2024-01-01"
+    end_date = datetime.today().strftime("%Y-%m-%d")
     risk_profile = risk_profile.lower()
     # Ajustar el nivel de confianza según el perfil de riesgo
     if risk_profile == "bajo":
@@ -119,4 +120,8 @@ def optimize_portfolio_kde_cvar(risk_profile: str = "medio"):
     optimal_weights = result.x
     cvar_value = calculate_cvar(optimal_weights)
 
-    return optimal_weights, -cvar_value
+    # Calcular el retorno esperado del portafolio
+    mean_returns = returns.mean()
+    portfolio_return = np.dot(optimal_weights, mean_returns)
+
+    return optimal_weights, portfolio_return, -cvar_value

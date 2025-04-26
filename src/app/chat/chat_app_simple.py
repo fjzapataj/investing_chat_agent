@@ -4,10 +4,8 @@ import streamlit as st
 
 # fmt: off
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
-from IPython.display import display, Image
-
 # fmt: on
-from app.chat.state_machine import graph
+from app.graphs.state_machine import graph
 
 # from app.chat.supervisor_graph import graph
 
@@ -25,7 +23,7 @@ def stream_graph_updates(user_input: str, config: dict):
 
 config = {"configurable": {"thread_id": "1"}}
 
-st.title("Chat LangGraph Demo")
+st.title("Chat LangGraph")
 
 menu = st.sidebar.selectbox("Selecciona una ventana", ["Chatbot", "Grafo Agente"])
 
