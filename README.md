@@ -96,6 +96,11 @@ Para lanzar la interfaz de usuario, puedes ejecutar cualquiera de las siguientes
   streamlit run src/app/chat_app_simple.py
   ```
 
+- Para ejecutar el monitoreo de la evaluación:
+  ```bash
+  streamlit run src/app/chat/dashboard.py
+  ```
+
 Asegúrate de tener instaladas las dependencias necesarias antes de ejecutar los comandos.
 
 
