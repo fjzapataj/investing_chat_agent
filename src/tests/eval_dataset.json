@@ -1,0 +1,22 @@
+[
+    {
+        "question": "\u00bfQu\u00e9 es un ETF?",
+        "answer": "Un ETF (Exchange-Traded Fund) es un fondo de inversi\u00f3n que se negocia en bolsas de valores, similar a una acci\u00f3n, y que contiene una colecci\u00f3n de activos como acciones, bonos o materias primas."
+    },
+    {
+        "question": "\u00bfCu\u00e1l es la diferencia entre acciones ordinarias y acciones preferentes?",
+        "answer": "Las acciones ordinarias otorgan derechos de voto en la empresa y posibles dividendos, mientras que las acciones preferentes generalmente no otorgan voto pero ofrecen pagos de dividendos m\u00e1s estables y prioritarios."
+    },
+    {
+        "question": "\u00bfQu\u00e9 factores afectan el precio del Bitcoin?",
+        "answer": "El precio del Bitcoin se ve influenciado por la oferta y la demanda, regulaciones gubernamentales, adopci\u00f3n institucional, eventos macroecon\u00f3micos y noticias relevantes en el mercado cripto."
+    },
+    {
+        "question": "\u00bfQu\u00e9 es un split de acciones?",
+        "answer": "Un split de acciones ocurre cuando una empresa divide sus acciones existentes en m\u00e1s acciones para aumentar la liquidez, sin cambiar el valor total de la inversi\u00f3n de los accionistas."
+    },
+    {
+        "question": "\u00bfQu\u00e9 es un fondo indexado y c\u00f3mo funciona?",
+        "answer": "Un fondo indexado es un tipo de fondo de inversi\u00f3n que busca replicar el rendimiento de un \u00edndice espec\u00edfico, como el S&P 500, mediante la inversi\u00f3n en los mismos activos que componen el \u00edndice."
+    }
+]
