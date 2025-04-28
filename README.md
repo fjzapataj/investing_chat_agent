@@ -95,6 +95,10 @@ Para lanzar la interfaz de usuario, puedes ejecutar cualquiera de las siguientes
   ```bash
   streamlit run src/app/chat_app_simple.py
   ```
+- Para ejecutar el table de la evaluación del modelo:
+  ```bash
+  streamlit run src/app/chat/dashboard.py
+  ```
 
 Asegúrate de tener instaladas las dependencias necesarias antes de ejecutar los comandos.
 
